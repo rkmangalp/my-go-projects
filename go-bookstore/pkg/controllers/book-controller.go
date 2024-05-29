@@ -13,6 +13,7 @@ import (
 
 var NewBook models.Book
 
+// GetBook handles the GET request to fetch all books
 func GetBook(w http.ResponseWriter, r *http.Request) {
 	newBook := models.GetAllBooks()
 	res, _ := json.Marshal(newBook)
@@ -22,6 +23,7 @@ func GetBook(w http.ResponseWriter, r *http.Request) {
 
 }
 
+// GetBookById handles the GET request to fetch a book by ID
 func GetBookById(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	bookID := vars["bookId"]
@@ -37,6 +39,7 @@ func GetBookById(w http.ResponseWriter, r *http.Request) {
 	w.Write(res)
 }
 
+// CreateBook handles the POST request to create a new book
 func CreateBook(w http.ResponseWriter, r *http.Request) {
 	CreateBook := &models.Book{}
 	utils.ParseBody(r, CreateBook)
@@ -46,6 +49,7 @@ func CreateBook(w http.ResponseWriter, r *http.Request) {
 	w.Write(res)
 }
 
+// DeleteBook handles the DELETE request to delete a book by ID
 func DeleteBook(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	bookId := vars["bookId"]
@@ -59,6 +63,7 @@ func DeleteBook(w http.ResponseWriter, r *http.Request) {
 	w.Write(res)
 }
 
+// UpdateBook handles the PUT request to update a book by ID
 func UpdateBook(w http.ResponseWriter, r *http.Request) {
 	var updateBook = &models.Book{}
 	utils.ParseBody(r, updateBook)
