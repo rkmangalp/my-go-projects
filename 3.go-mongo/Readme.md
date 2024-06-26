@@ -1,28 +1,28 @@
-# Go PostgreSQL CRUD API
+# Go MongoDB CRUD API
 
-This project is a simple CRUD API built with Go and PostgreSQL. It allows users to perform Create, Read, Update, and Delete operations on user data stored in a PostgreSQL database.
+This project is a simple CRUD API built with Go, MongoDB, and httprouter. It allows users to perform Create, Read, Update, and Delete operations on user data stored in a MongoDB database.
 
 ## Features
 
 - Create, Read, Update, and Delete users
 - RESTful API endpoints
 - JSON request and response format
-- PostgreSQL integration using the `pgx` driver
+- MongoDB integration using the official Go MongoDB driver
 
 ## Getting Started
 
 ### Prerequisites
 
 - Go 1.16+
-- PostgreSQL
+- MongoDB
 - Git
 
 ### Installation
 
 1. **Clone the repository:**
     ```sh
-    git clone https://github.com/your-username/go-postgres.git
-    cd go-postgres
+    git clone hhttps://github.com/rkmangalp/my-go-projects.git
+    cd go-mongo
     ```
 
 2. **Install dependencies:**
@@ -30,20 +30,64 @@ This project is a simple CRUD API built with Go and PostgreSQL. It allows users 
     go mod tidy
     ```
 
-3. **Set up PostgreSQL:**
-    - Create a PostgreSQL database and user.
-    - Update the connection string in `main.go` to match your database configuration.
-
-4. **Run the application:**
+3. **Run the application:**
     ```sh
     go run main.go
     ```
 
 ### Project Structure
 
+Here's a sample README file for your Go MongoDB CRUD project named go-mongo:
 
+markdown
+Copy code
+# Go MongoDB CRUD API
 
+This project is a simple CRUD API built with Go, MongoDB, and httprouter. It allows users to perform Create, Read, Update, and Delete operations on user data stored in a MongoDB database.
 
+## Features
+
+- Create, Read, Update, and Delete users
+- RESTful API endpoints
+- JSON request and response format
+- MongoDB integration using the official Go MongoDB driver
+
+## Getting Started
+
+### Prerequisites
+
+- Go 1.16+
+- MongoDB
+- Git
+
+### Installation
+
+1. **Clone the repository:**
+    ```sh
+    git clone https://github.com/your-username/go-mongo.git
+    cd go-mongo
+    ```
+
+2. **Install dependencies:**
+    ```sh
+    go mod tidy
+    ```
+
+3. **Run the application:**
+    ```sh
+    go run main.go
+    ```
+
+### Project Structure
+
+├── cmd\main
+| └── main.go
+├── controllers
+│ └── controller.go
+├── models
+│ └── user.go
+├── go.mod
+└── go.sum
 
 ### API Endpoints
 
@@ -61,7 +105,7 @@ This project is a simple CRUD API built with Go and PostgreSQL. It allows users 
 - **Response:**
     ```json
     {
-        "id": 1,
+        "id": "60d5f87e1d25b8b3f5d8b9e1",
         "name": "John Doe",
         "gender": "Male",
         "age": 30
@@ -75,7 +119,7 @@ This project is a simple CRUD API built with Go and PostgreSQL. It allows users 
     ```json
     [
         {
-            "id": 1,
+            "id": "60d5f87e1d25b8b3f5d8b9e1",
             "name": "John Doe",
             "gender": "Male",
             "age": 30
@@ -89,7 +133,7 @@ This project is a simple CRUD API built with Go and PostgreSQL. It allows users 
 - **Response:**
     ```json
     {
-        "id": 1,
+        "id": "60d5f87e1d25b8b3f5d8b9e1",
         "name": "John Doe",
         "gender": "Male",
         "age": 30
@@ -110,7 +154,7 @@ This project is a simple CRUD API built with Go and PostgreSQL. It allows users 
 - **Response:**
     ```json
     {
-        "id": 1,
+        "id": "60d5f87e1d25b8b3f5d8b9e1",
         "name": "John Smith",
         "gender": "Male",
         "age": 31
@@ -123,7 +167,7 @@ This project is a simple CRUD API built with Go and PostgreSQL. It allows users 
 - **Response:**
     ```json
     {
-        "message": "Deleted user with ID: 1"
+        "message": "Deleted user: 60d5f87e1d25b8b3f5d8b9e1"
     }
     ```
 
@@ -142,5 +186,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Acknowledgments
 
-- [pgx](https://github.com/jackc/pgx) - PostgreSQL driver and toolkit for Go
+- [httprouter](https://github.com/julienschmidt/httprouter)
+- [MongoDB Go Driver](https://github.com/mongodb/mongo-go-driver)
 - [Go](https://golang.org/)
+
