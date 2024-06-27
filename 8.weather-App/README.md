@@ -59,10 +59,12 @@ To fetch weather data for a different city, change the value of the **city** var
 city := "New York"
 ```
 ## Project Structure
- 
- .
+
+```css 
+.
 ├── main.go
 ├── README.md
+```
 
 - main.go: The main Go file containing the logic to fetch and display weather data.
 - README.md: This README file.
