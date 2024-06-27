@@ -61,9 +61,9 @@ type WeatherResponse struct {
 }
 
 func main() {
-	// Replace 'YOUR_API_KEY' with your OpenWeatherMap API key
-	apiKey := "d108e3f8f59b632ac054b09e3b3a8f2a"
-	city := "Hyderabad" // Replace with the city name you want to fetch weather for
+
+	apiKey := "Your_API_KEY" // Replace 'YOUR_API_KEY' with your OpenWeatherMap API key
+	city := "Hyderabad"      // Replace with the city name you want to fetch weather for
 
 	url := fmt.Sprintf("http://api.openweathermap.org/data/2.5/weather?q=%s&appid=%s&units=metric", city, apiKey)
 
