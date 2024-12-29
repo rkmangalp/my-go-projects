@@ -4,8 +4,15 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"log"
 	"net/http"
+	"os"
 )
+
+// Config struct to load API key from config.json
+type Config struct {
+	APIKey string `json:"apikey"`
+}
 
 // Define a struct to represent the JSON response from the API
 type WeatherResponse struct {
@@ -60,20 +67,39 @@ type WeatherResponse struct {
 	Cod      int    `json:"cod"`
 }
 
+func loadConfig(filename string) (Config, error) {
+	var config Config
+	file, err := os.Open(filename)
+	if err != nil {
+		return config, fmt.Errorf("failed to open config file: %v", err)
+	}
+	defer file.Close()
+
+	decoder := json.NewDecoder(file)
+	err = decoder.Decode(&config)
+	if err != nil {
+		return config, fmt.Errorf("failed to decode config file: %v", err)
+	}
+
+	return config, nil
+}
+
 func main() {
-
-	apiKey := "Your_API_KEY" // Replace 'YOUR_API_KEY' with your OpenWeatherMap API key
-
+	// Load the API key from the config.json file
+	config, err := loadConfig("config.json")
+	if err != nil {
+		log.Fatalf("Error loading configurations: %v", err)
+	}
 	// promt user to enter the city
 	var city string
 	fmt.Println("Enter the city name")
-	_, err := fmt.Scan(&city)
+	_, err = fmt.Scan(&city)
 	if err != nil {
 		fmt.Printf("Error reading input: %s\n", err)
 		return
 	}
 
-	url := fmt.Sprintf("http://api.openweathermap.org/data/2.5/weather?q=%s&appid=%s&units=metric", city, apiKey)
+	url := fmt.Sprintf("http://api.openweathermap.org/data/2.5/weather?q=%s&appid=%s&units=metric", city, config.APIKey)
 
 	// Make a GET request to the API
 	response, err := http.Get(url)
